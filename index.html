@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Powdered Toast Man Adventures</title>
+		<style>
+
+body{
+
+    background:#000000;
+	color:#ffffff;
+
+}
+		
+#game_container{
+
+    margin-top:100px;
+    margin-right:auto;
+	margin-left:auto;
+	width:640px;
+	height:480px;
+    position:relative;
+	
+
+}
+
+ul{
+
+   margin-top:25px;
+   margin-bottom:25px;
+
+}
+
+.done{
+
+    color:green;
+
+}
+
+.todo{
+
+    color:red;
+
+}
+
+.idea{
+
+    color:yellow;
+
+}
+
+		</style>
+    </head>
+	
+	
+    <body>
+	
+	
+	
+	<div id="game_container"></div>
+	<div id="out">...</div>
+	
+<br><br><br><br><br>
+	
+	<h1>Powdered Toast Man Adventures:</h1>
+
+<h2>The Todo List:</h2>
+
+<p> <span class="todo">This text</span> indicates a bug that should be fixed, a feature that needs to be implemented, or something that needs to be done. </p>
+<p> <span class="idea">This text</span> indicates a note, idea, or suggestion. </p>
+<p> <span class="done">This text</span> indicates something that has been completed. </p>
+
+<ul>
+    
+	<li><h3>main.js:</h3><ul class="todo">
+	    <li class="done"> (2015.11.03) make reset upgrades button functional.</li>
+		<li class="done"> (2015.11.03) make it so the upgrades menu can actually be used to set upgrades. </li>
+	    <li class="done"> (2015.11.02) add a level menu state, here the player will set the current wave they would like to play.</li>
+	    <li class="done"> (2015.10.30) Got everything working again with the new version of slider.js</li>
+	    <li class="done"> (2015.10.26) made changes so that the game will now use slider_20151026.</li>
+	    <li>fix bug: The pause button in game state only slides in once then never does again</li>
+		<li class="idea">Slider.addScene calls do not need to be places inside closure's for each game state. If this does not bother you find otherwise they can 
+		be placed elsewhere including perhaps a separate file. </li>
+	
+	    <li class="done"> (2015.10.21) gameOver state: there should be a display object that slides in that includes a congratulations or to bad message depending if there is a win or loss.</li>
+	    <li class="done"> (2015.10.21) gameOver state: there should be a try again (loose) or next wave (win) button that appears on the menu rather than just the to game menu button</li>
+	    <li class="done"> (2015.10.21) title screen: comment out how to play button for now. A how to play screen will have to be different for each level, so it does not belong there.</li>
+	    <li class="done"> (2015.10.21) gamePaused state: add dispObject that will display the word paused that comes down onto the peace of toast</li>
+		
+	</ul></li>
+	
+	<li><h3>render.js:</h3><ul class="todo">
+		<li class="done"> (2015.10.30) Got everything working again with the new version of slider.js</li>
+		<li class="done"> (2015.10.26) made changes so that the game will now use slider_20151026.</li>
+		<li>Add a sprite sheet for rendering the sky, grass, and house.</li>
+	    <li>Add the toaster that ptm jumps into</li>
+		<li>Draw something to canvas when app is loading images to show the current progress.</li>
+	    <li class="idea">Make ptm sprite sheet and use that in place of ctx.rotate to help improve preformance</li>
+		<li class="idea">Place additional buildings, and objects other than the target.</li>
+		<li class="idea">Add blast-off animation once ptm leaves the cooking state and enters launch state</li>
+	    <li class="idea">Design a better interface that appears once ptm enters his flight state for basic flight mode, and others.</li>
+		<li class="idea">Make better animation for when ptm jumps into the toaster</li>
+	
+	    <li class="done"> (2015.10.21) I want sprites for the truck and plane in raisinBreath flight mode</li>
+		<li class="done"> (2015.10.21) I want the game over screen skinned so the player knows for sure if they won or lost.</li>
+	    <li class="done"> (2015.10.20) Make drawing functions for each flightState in basic flightMode</li>
+		<li class="done"> (2015.10.20) Make drawing functions for each flightState in rasinBreath flightMode</li>
+		
+	</ul></li>
+    
+	<li><h3>ptm.js:</h3><ul class="todo">
+	
+	    <li>add a leveledUp property that is to be used to trigger a leveledUp application state</li>
+	    <li>introduce flightPowerBurnRate property. Flight Power should burn at a per pixel rate, and should increase as wave increases. This burn rate 
+		can be countered by investing logs into the flight power upgrade. This burn rate should also increase at a more intense rate for higher flight modes.</li>
+	    
+		<li>ptms position should be updated based on pixels per second (see demo)</li>
+	    <li>flightMode raisinBreath: ptm.display.pitchRestrict should not be in the ptm.display object, it should be in a separate object</li>
+		<li>flightMode basic: This new interface should show the pitch range for ptm</li>
+		<li>flightMode raisinBreath: This new interface should show the pitch range for ptm</li>		
+		<li>flightMode raisinBreath: This new interface should show a button to switch to the stance mode</li>		
+		<li>flightMode raisinBreath: when in stance mode an interface should appear showing that the player can touch in any direction around ptm 
+		to fire his raisin breath in that direction</li>
+		<li>flightMode raisinBreath: the interface that displays the distance between the plane and truck should be more than just a number, 
+		a mini map of some kind would be nice</li>
+		<li>add a ptm cooking state that he enters once in the toaster, this should apply to basic and rasinBreath modes so far.</li>
+		<li>have flight mode &#34;clinger&#34; working for level &#34;cling tenaciously!&#34; (ptm fly's backwards, you control a guy on his back) </li>
+		
+		<li>make levels unlock-able</li>
+		
+		
+	    <li class="idea">wave 31 is used as a means to know that they player has won a log when completing wave 30 for the first time. If you no longer wish to 
+		award logs for completing a wave for the first time, or use a different system to keep track, be sure to change this.</li>
+		<li class="idea">flightMode raisinBreath: the pitchRestriction should be a value that changes as a result of upgrades or wave advancement</li>
+		<li class="idea">The reverences to each Box class instance can be get once in the new game method that is called once, as long as such objects are not 
+		created and deleted on demand.</li>
+		<li class="idea">flightMode raisinBreath: what about the kitten? that is another object that I might want in the map, unless I just recognize that if the 
+		truck reaches the other side of the map the kitten got hit, and the player lost.</li>
+		<li class="idea">how about a &#34;freeRange&#34; mode?</li>
+		<li class="idea">how about a &#34;crazyFlyer&#34; mode? The idea is a mode where ptm is actually AI controlled, but the player can suggest a direction.</li>
+		<li class="idea">how about a &#34;GCTMT&#34; (Ground Control to Major Tom) mode? ptm stays in launch mode and just keeps flying up into space.</li>
+		<li class="idea">how about a &#34;platform&#34; mode?</li>
+	
+	
+	    <li class="done"> (2015.11.03) ptm.findLevel : formula for finding next level needs work, they player jumps way to many levels way to fast</li>
+	    <li class="done"> (2015.11.03) add xp, and level system for ptm</li>
+	    <li class="done"> (2015.11.03) added onWin functions for each flightState, place any code that should be done on a flight mode win there (such as awarding XP)</li>	    
+	    <li class="done"> (2015.11.03) (ALERT! comment addressed) flightMode Basic: moved ptm starting x, and y declarations into ptm Box class constructor call, however i did have to leave the box class heading 
+		deceleration in the ready state tick function, it needs to be there to set back heading when transitioning back from the barDrag state.</li>
+		<li class="done"> (2015.11.03) fix bug: where final wave is can not be won on flight mode basic.</li> 
+		<li class="done"> (2015.11.03)fix bug: where log is not award to player when when wave 30 is completed for the first time.</li>
+		<li class="done"> (2015.11.03) fix bug: There is a bug where the remaining logs is not figured when the player enters the upgrades menu. </li>
+		<li class="done"> (2015.11.03) add an logsRemaining property, and a method called findRemainingLogs that finds logsRemaining.</li>
+	    
+	    <li class="done"> (2015.11.02) ptm.playWave property added to indicated current wave to play for current flightMode</li>
+	    <li class="done"> (2015.11.02) ptm.fmConfig.wave: this value should be able to be set to a value from 1 to the highest unlocked value</li>
+		<li class="done"> (2015.10.31) ptm.fmConfig.wave: this value should start at 1 and incress by 1 each time the player wins a wave</li>
+		<li class="done"> (2015.10.31) ptm.fmConfig.wave: this value should have a max value of say 30 for each flight mode.</li>
+		
+		<li class="done"> (2015.10.31) add upgrades</li>
+		<li class="done"> (2015.10.31) add waves for each level</li>
+	    <li class="done"> (2015.10.31) have ptm.fmConfig.wave increase plane pitch restriction to say 80 if wave === 30.</li>
+	
+	    <li class="done"> (2015.10.31) ptm.display renamed to ptm.fmDisplay</li>
+	    <li class="done"> (2015.10.31) add a new public object called ptm.fmConfig, this will store information pertaining to the current flight mode that will change based on wave, 
+		and upgrade settings. This will likely be the first step in introducing waves (that increase difficulty) and upgrades (depress difficulty). </li>
+	    <li class="done"> (2015.10.21) flightMode raisinBreath: fix bug: the controls for shooting the raisin breath are way off.</li>
+	    <li class="done"> (2015.10.21) flightMode raisinBreath: have an interface that appears around the plane when it is hit. The interface should at least show the 
+		direction to the truck</li>
+	    <li class="done"> (2015.10.21) flightMode raisinBreath: find a good range of control for the pitch of the plane to make the difficulty just right</li>
+		<li class="done"> (2015.10.21) flightMode raisinBreath: apply flight power to help increase difficulty</li>
+		<li class="done"> (2015.10.21) flightMode raisinBreath: This new interface should show the current heading of the plane when it is hit.</li>
+		<li class="done"> (2015.10.21) flightMode raisinBreath: This new interface should show the pitch range for the plane when it is hit.</li>
+		<li class="done"> (2015.10.20) flightMode raisinBreath: the player should loose as soon as the distance between the plane and truck reaches zero. kitten or not 
+		in the map it will always be to late when that happens.</li>	
+	    <li class="done"> (2015.10.20) flightMode raisinBreath: The player should be able to change the pitch of the plane when in the hit flightState. This control 
+		will be needed to make the level allot less hard if the player must always hit the truck dead on. There should only be a 10-20 degree range 
+		that the player can change, otherwise I might make it to easy.</li>
+		<li class="done"> (2015.10.20) flightMode raisinBreath: for now rasinBreath flightMode is to easy, make it so that you have to hit the truck with the plane, rather then 
+		just shooting it down before the truck gets behind the plane to the other side of the map.</li>
+	    <li class="done"> (2015.10.20) flightMode raisinBreath: fix a bug where ptm shoots his raisin breath twords the pause button each time it is pressed when in the 
+		stance flightState.</li>
+		<li class="done"> (2015.10.20) flightMode Basic: have an interface that shows where to press to change pitch</li>
+		<li class="done"> (2015.10.20) flightMode Basic: make the area to press to change ptms pitch closer to ptm (within the radius of the new interface) </li>
+		<li class="done"> (2015.10.20) flightMode Basic: make distance to target appear in interface that will be close to ptm</li>
+		<li class="done"> (2015.10.20) flightMode Basic: make a flight power meter rather than a number value, and have it as part of the interface</li>
+		<li class="done"> (2015.10.20) flightMode raisinBreath: This new interface should show the direction to the plane during flying state</li>
+		<li class="done"> (2015.10.20) flightMode raisinBreath: there should be an interface that appears around ptm durring the level out flight state.</li>
+		<li class="done"> (2015.10.20) flightMode raisinBreath: This new interface should show where to press to change pitch</li> 
+		
+		<li class="done"> (2015.10.19) flightMode raisinBreath: I will want to have some kind of display that indicates the distnace between the plane and truck</li>
+	    <li class="done"> (2015.10.19) add always state for each flightMode, place code that should be called on every frame tick regardless of flightState there.</li>
+	    <li class="done"> (2015.10.19) Basic flightMode: create new house Box class instance to replace relevant properties in ptm object</li>
+		<li class="done"> (2015.10.19) raisinBreath flightMode: create new Box class instance to replace this.shot</li>
+		<li class="done"> (2015.10.19) raisinBreath flightMode: create new Box class instance to replace relevant properties in ptm object</li>
+	    <li class="done"> (2015.10.18) basic flightMode: create new house Box class instance to replace ptm.target.</li>
+	    <li class="done"> (2015.10.18) There will likley need to be an array to store instances of the Box Class.</li>
+		<li class="done"> (2015.10.18) one value of a Box class instance should be some kind of id like &#34;plane&#34;, &#34;house&#34;, ect that will be used to get a box class 
+		instance when it is needed</li>
+		<li class="done"> (2015.10.18) I will ned a getBoxById method</li>
+		<li class="done"> (2015.10.18) There should be some kind of index that stores boxID's and index values to the coresponding boxID's in the array that sores Box class instances. 
+		This will likely help improve performance compared to looping over the array each time.</li>
+		
+		<li class="done"> (2015.10.18) add a main closure that returns the ptm public object. Inside the closure place anything that does not need to be public.</li>
+		<li class="done"> (2015.10.18) make it so each flightMode has a closure that contains at least one method or variable that does not need to be 
+		public, or shared across other flight modes.</li>
+		<li class="done"> (2015.10.18) fix glitch where ptm dos not appear when starting a new basic mode game after winning raisinBreath mode</li>
+		<li class="done"> (2015.10.18) make new game level: save the kitten. ( Make a plain crash into a truck to save a kitten. )</li>
+		<li class="done"> (2015.10.18) add a global onWin method that will preform certain actions that will always occur when the player wins (such as gaining a log, or xp points)</li>
+		<li class="done">(2015.10.18) ptm.winLostCheck() : because I now have more than one flightMode, and the conditions that will lead to winning change between flight modes. 
+		This method should be commented out and eventually removed. methods such as this should be part of a flightMode object, or becuase it does not need 
+		to be public a closure within the flightMode object.</li>
+		<li class="done"> (2015.10.18) have more than one flight mode working.</li>
+		<li class="done"> (2015.10.18) have &#34;rasinBreath&#34; flight mode working for level &#34;save the kitten!&#34;</li>
+		<li class="done"> (2015.10.18) flightMode raisinBreath: flightState should always end in &#34;over&#34; state as long as thats how main.js knows a game has ended. This should apply to all flight modes actually.</li>
+	</ul></li>
+	
+	<li><h3>toaster.js:</h3><ul class="todo">
+	    <li>toaster, and dial global variables should be combined into a single global variable, or this whole file should be combined into ptm.js</li>
+	</ul></li>
+	
+	<li><h3>user_action.js:</h3><ul class="todo">
+	    <li class="done"> (2015.10.18) ptm.pitch and toaster methods should not be called by user_action.js at all times. Instead it should call ptm.userAction, and ptm should
+        handle such things for the current flightMode and flightState.</li>
+	</ul></li>
+	
+	<li><h3>api.js:</h3><ul class="todo">
+	    <li>redesign your setUpConstructor method: sometimes I do not want all the properties that I assign to the argument object to be 
+		part of a class instance, but to be used in the setup process when called with the new keyword. Maybe have a config propertie that is 
+		ignored by the method?</li>
+		<li class="idea">Becuase api.js is a file that you will cary with you to other projects, always look for code that should be placed in api.js. An 
+		example of code that belongs in api.js is any code that can be writen in a reusable method form that will likely be shared across two or more 
+		modules. If it is only really used in a single module, and nowhere else, than it should remain as a helper function within that module, do not place 
+		it here.</li>
+	</ul></li>
+	
+	<li><h3>acetate.js:</h3><ul class="todo">
+	    <li class="idea">consider adding method that returns the context of a given layer by sheetID, in some cased you may want to quickly get that.</li>
+		<li class="idea">a sheets canvas drawing context should be the first argument in a draw method callback</li>
+		<li class="idea"> The image repository system that you have should be removed from render.js and placed here in acetate.js. An Image repository is 
+		an important part of any applaction that depends on one or more external image files, and is not application specific.</li>
+		<li class="idea">Remember that this is a file that you will carry with you to other projects, as such apply all that you know that should be done 
+		when working with such a file. </li>
+	</ul></li>
+	
+	<li><h3>map.js:</h3><ul class="todo">
+	    <li>viewPort global variable should be consolidated into map variable, and all necessary changes should be made to dependences that use viewPort </li>
+	    <li>if you change the width, or height of the viewport it should effect stuff used with slider.js, ptm.js, render.js ect. In other words I should
+		be able to change the viewport size, and not have everything go to hell.</li>
+		
+		<li class="idea">The Box class in ptm.js, and everything that pertains to it such as ptm.getBoxById should probibly be moved here to map.js. 
+		Everything that has to do with that is somthing that I can see being useful in future projects.</li>
+		<li class="idea">considering that map.js will likely become a file that you will carry on with you to other projects, consider looking into moving 
+		code from application specific files such as ptm.js into map.js. That is if it can be done in a generic, modular way in which map does not depend 
+		on any application specific dependency.</li>
+	</ul></li>
+	
+	<li><h3>slider.js (if you need to make any changes do so in the main project folder) </h3><ul class="todo">
+	        <li>the background plugin should update position based on pixels per second.</li>
+	        <li class="done"> (2015.10.26) commented out a line that makes slider's Scene.user_action returns true when if finds a button that has been click, however this prevents any overlaping buttons 
+			from getting clicked or activated.</li>
+	        <li>make it so public functions can be append to slider.js by plug-in's</li>
+	        <li>pull user-action, and event related stuff into a plug-in called slider_useraction.js</li>
+	        <li>make it so the button class prototype can be appended to by plug-ins.</li>
+	        <li class="done"> (2015.10.26) appendProps helper function was made more concise thanks to regular expressions</li>
+	        Class instance, and the x, and y position where the user pressed.</li>
+	        <li>The plug-in slider_canvas has been made but the background draw function should be pulled into it. 
+			Slider.getBackground().draw(img,ctx) : I do not like this being in slider.js, but maybe I need to make a separate file called 
+			slider_canvas.js?</li>
+	        <li>add a scene class reset method. This may be needed to fix a bug with the pause button only sliding in once in the game scene in main.js. 
+	    	this medthod should reset the scene to its hard coded default state in the case that a slide out animation state is never done, or competed.</li>
+	        <li> have a method for scene that can be used to change the type value of a button. You may want to be able to change a action type to a menu type,
+	    	 when it comes to your level select buttons for example (level starts out locked, but can become unlocked).</li>
+			<li>make a new plugin called slider_movedistnace that adds distnaceX, and distanceY properties to the Button class that are used by a new 
+			button update method that woeks by dividing the given distances over maxFrames to find delta x and delta y. </li>
+	        <li>new button type idea: how about a &#34;scene_changer&#34; type button. This type of button will slide given stuff out, and in after the slide 
+	    	in animation. However it will not trigger the slide out animation. This type could prove useful if you want the scene to chnage up now and 
+	    	then without having to create another separate scene.</li>
+	        <li>fix bug: it is possible to activate two buttons at once while the slide out animation is running</li>
+			
+			<li class="idea">appendProps helper function: it is true that this function helps prevent the occurrence of redundant elements in 
+			buttonDefaults, and sceneDefaults when adding in plug-ins that use the same properties. However just simply concating the plug-in arrays in is 
+			only two lines of code, and the end result is that the default value will be whatever is set in the last plug-in. If you will start useing this 
+			helper in any other module, then move it to api.js</li>
+			<li class="idea">Can I deprecate the entire background object and turn it into a plugin that makes use of two buttons?</li>
+			<li class="idea">Scene class: add a setMaxFrames method to have the option to redefine maxFrames, and have everything properly updated when doing so. </li>
+	    	<li class="idea"> images : Although slider is not an image repository it should store information pertaining to what image to display to 
+	    	skin a button, yet again so far that is something that can just be stored inside a closer or given as a literal within the button render 
+	    	function so maybe this file is a done deal if you just know how to use it.</li>
+	    	<li class="idea">images : in the case of animations the button class should store a value that has to do with the current frame index, It should also contain 
+	    	other relevant values such as the number of frames. (this may not be needed)
+	    	</li>
+	    	<li class="idea">images : in the case of animations the button class should store a value that would likley be a boolean that indacates if an animation should 
+	    	loop from the beginning or back to the beginning. (this may not be needed) </li>
+	    	<li class="idea">Remember that this is a file that you will carry with you to other projects, as such make sure that it only depends on files that 
+	    	will also be carried to new projects as well. As of this writing it looks like it only depends on api.js, thats fine if you can keep it that way.</li>
+	
+	        <li class="done"> (2015.10.25) background object and getBackground public method commented out, 
+			and replace with new plug-in slider_linearbackground.js</li>
+	        <li class="done"> (2015.10.25) when onAction, onEnd or any other kind of event callback is fired it should have access to the Scene 
+			<li class="done"> (2015.10.24) addPlugin public method: make it so addPlugin checks for a property in the Button Class (or Scene Class) before appending it in 
+			the event that two plug-ins are loaded that both use the same property.</li>
+	        <li class = "done"> (2015.10.24) made a new plug-in called slider_swingin</li>
+			<li class="done"> (2015.10.24) Button Class sx,sy,dx,dy have been depreciated from main static.js module, however they have been pulled into a new plugin 
+            that adds that kind of functionality if desired called slider_staticdelta.js</li>
+            <li class="done"> (2015.10.24) forFrame method changed : now you just simply set x and y in the forFrame method you define for the button class instance by 
+			using the this keyword, you do not return anything.</li>
+            <li class="done"> (2015.10.24) Make the only module level button update method the forFrame method, all other ideas should be abstracted away into plug-ins. 
+			To do this I may need some kind of array of methods that are used to manipulate button values that is called by Scene.update. So slider.js 
+			alone will just come with forFrame, and additional methods can be appended to the array by way of plug-ins.</li>
+			
+			<li class="done"> (2015.10.23) Scene.renderAll() has been commented out, and moved to slider_canvas.js plugin.</li>
+    		<li class="done"> (2015.10.23) render and globalRender button properties have been removed from buttonDefaults and moved to slider_canvas.js plugin</li>
+    		<li class="done"> (2015.10.23) buttonDefaults variable added as a way to append to the Button constructor by way of plugin</li>
+            <li class="done"> (2015.10.23) made my first slider.js plugin slider_canvas.js</li>
+            <li class="done"> (2015.10.23) PLUG-IN SUPPORT! added an addPlugin public method that will allow for the use of plug-ins to abstract away methods that have to do 
+    		with rendering as well as a whole lot of other things</li>
+    		<li class="done"> (2015.10.23) because of the bug that occurred with rendering, and because rendering the background is not so trivial I added a 
+    		draw method to the background object. I don't like the idea of having a rendering function in slider.js, but it seems necessary for the moment.</li>
+            <li class="done"> (2015.10.23)Becuase Button.userAction is never called directly, but from Scene.userAction why have the method at all? unless I find a reason why I 
+    		need to bother the whole method will be comment out, and collision detection will be done in Scene.user_action.</li>
+            <li class="done"> (2015.10.23) Button Class: Button.userAction: commented out condishonal that is redundant if method is called from 
+		    Scene.user_action</li>
+            <li class="done"> (2015.10.23) fix bug: everything flashes when the background starts over. (This had to do with the demo, and not the with slider.js) 
+		    itself</li>
+	        <li class="done"> (2015.10.22) added the option to add a delta method to the button class that allows manipulation of delta x and delta y</li>
+	        <li class="done"> (2015.10.22) added the option to add a forFrame method to the button class that allows direct control of x and y</li>
+	        <li class="done"> (2015.10.22) new button idea: add a 'dummy' button type that will help do away with DispObj class. Instead just have a button type that does not do anything  
+		    when clicked, simple.</li>
+	        <li class="done"> (2015.10.22) make a slider.js demo for making and testing significant changes to slider.js</li>
+	        <li class="done"> (2015.10.22) have separate methods that are called on user action depending on button type such as event_action. I like this better than 
+	    	using a switch, just directly call an appropriate method that calls the appropriate callbacks, and sets things in motion.</li>
+    		<li class="done"> (2015.10.22) images : I am running into a problem with rendering that might be able to be resolved by storing a 
+	    	function in a button class instance that contains a code that can be used to display the proper sprite inside a sprite sheet.</li>
+    		<li class="done"> (2015.10.22) pass scene class instance to render function as second argument, this will enable me to use Scene.frame to 
+	    	know the state of the animation. This can then be used in conjunction with other variables inside a closure to aid in more advanced animations</li>
+    	    <li class="done"> (2015.10.15) add on action event callback support</li>
+    		<li class="done"> (2015.10.15) have more than one button type.</li>
+	    	<li class="done"> (2015.10.15) add additional button type that just directly calls an on action callback, and does not cause a slide out animation.</li>
+            
+		    
+    </ul></li>
+	
+	<li><h3>sound</h3><ul class="todo">
+	
+	    <li>add sound.</li>
+		<li class="idea">title track: Reach For the Stars - Richard Harvey ( Hell Yes! )</li>
+		<li class="idea">music: Check out Sunshine Patrol By Tom Elliot</li>
+		<li class="idea">music: http://ianlueck.blog.com/2012/02/14/in-the-army-powdered-toast-man/</li>
+		
+		<!-- check bottom of page for tracks if link is broken -->
+	</ul></li>
+	
+	<li><h3>other</h3><ul class="todo">
+	    
+	    <li>make each *.js file only define one global.</li>
+	    <li>title screen menu should be dynamic, and only show continue if there is a game state stored. Else the only option is new game.</li>
+	    <li>add how to play screen</li>
+	    <li>add options menu</li>
+	    <li>add clear game state option in options menu</li>
+	    <li>add auto save of game state, and have continue option</li>
+	    <li class="idea">what are logs? will they be skill points? If so should they be awarded each time the player wins?</li>
+	    <li class="idea">consider adding upgrades menu where logs are skill points used to upgrade</li>
+	    <li class="idea">consider adding xp and leveling system, and have logs as a special separate skill point currency.</li>
+	</ul></li>
+</ul>
+	
+	<!--
+	<script src="src/api_20151013.js"></script>
+	<script src="src/acetate_20151005.js"></script>
+	<script src="src/map_20150924.js"></script>	
+	<script src="src/user_action_20151018.js"></script>
+	<script src="src/toaster_20151015.js"></script>
+	<script src="src/ptm_20151021.js"></script>	
+	<script src="src/slider_20151015.js"></script>
+	<script src="src/render_20151021.js"></script>
+	<script src="src/main_20151021.js"></script>
+	-->
+	
+	<script src="src/api.js"></script>
+	<script src="src/acetate.js"></script>
+	<script src="src/map.js"></script>	
+	<script src="src/user_action.js"></script>
+	<script src="src/toaster.js"></script>
+	<script src="src/ptm.js"></script>	
+	
+	<!-- new slider module and plug-ins! -->
+	<script src="src/slider.js"></script>
+	<script src="slider_plugin/slider_canvas.js"></script>
+	<script src="slider_plugin/slider_staticDelta.js"></script>
+	<script src="slider_plugin/slider_movedistance.js"></script>
+	<script src="slider_plugin/slider_linearbackground.js"></script>
+	<script src="slider_plugin/slider_swingin.js"></script>
+	<script src="slider_plugin/slider_getbuttonbyid.js"></script>
+	<script src="slider_plugin/slider_upgradebutton.js"></script>
+	
+	
+	<script src="src/render.js"></script>
+	<script src="src/main.js"></script>
+	
+	
+	<!--
+	
+line count for ptm adventures v 2015.10.20:
+
+api.js					134
+acetate.js				266
+map.js					 46
+user_action.js			307
+toaster.js				202
+ptm.js					941
+slider.js				351
+render.js				819
+main.js					458
+
+					  3,524 (lot's of commented out code though)
+	
+	
+line count for ptm adventures v 2015.11.03:
+
+api.js					144
+acetate.js				266
+map.js					 46
+user_action.js			189
+toaster.js				202
+ptm.js				  1,238
+slider.js				392
+(slider plugins)        396
+render.js				846
+main.js					773
+
+                      4,492 (cleaned out allot of older comment out code also)
+	
+	
+	
+	-->
+
+
+<!--
+
+- The Flying Dutchman Overture – Richard Wagner (title card)
+- Big City Suite – Philip Green [Capitol Records] (PTM at the office)
+- Star Encounters – Jack Mayborn [OGM] (“Will evil never rest? I hope not.”)
+- Reach For the Stars – Richard Harvey (“POWDERED… TOAST… MAN!!!”)
+- Star Encounters – Jack Mayborn [OGM] (cat crossing the street)
+- Battle at Sea – Johnny Pearson (cat sees the truck approaching)
+- Ballet Music From Faust – Charles Gounod (PTM shoots down the plane)
+- Festival Overture 1812 Op.49 – Peter Ilyich Tchaikovsky (PTM picks up the kitten)
+- Big City Suite – Philip Green [Capitol Records] (another distress call)
+- Reach For the Stars – Richard Harvey (“POWDERED… TOAST… MAN!!!”)
+- ? (the Pope held hostage)
+- Festival Overture 1812 Op.49 – Peter Ilyich Tchaikovsky (“Leave everything to me!”)
+- Light Movement – George Hormel [Capitol Records] (PTM rescues The Pope)
+- Without Walls A – Mladen Franko (choir)
+- William Tell Overture – Gioachino Rossini (PTM takes off)
+- Big City Suite – Philip Green [Capitol Records] (another distress call)
+- Knight Errant – Sam Fonteyn (“Sorry mac, but I’ve got to attend to something REALLY important.”)
+- Merry as a Grig – Van Phillips (PTM saves breakfast)
+- Eerie Emotional – Philip Green [Capitol Records] (choir)
+- DEBUSSY: Prelude to the Afternoon of a Faun – Lee Ashley [OGM] (right before “Magical Effect (e)”)
+- Magical Effect (e) – Paddy Kingsland (end of PTM’s save)
+- Very End – Sam Fonteyn (PTM takes off)
+- ? (Ren and Stimpy eating breakfast, dissatisfied)
+- Spiralling Up – Dick Walter (PTM returns)
+- Knight Errant – Sam Fonteyn (PTM farts as he takes off)
+- Sylvia-Pizzicati – Leo Delibes (Ren and Stimpy eating breakfast, satisfied)
+- Disaster – Bruce Campbell (“My toast particles are dissipating!”)
+- The Star Spangled Banner (PTM arrives in the White House bathroom)
+- Trumpet Talk – Dick Walter (“I’m caught in my own zipper!”)
+- ? (“Any time you’re ready, Mr. President.”)
+- Dixie – Graham De Wilde (“Oh thank you, PTM!”)
+- America (PTM taking the presidential oath)
+- Hail to the Chief – Graham De Wilde (“Lovely assistant, take a letter.”)
+- Lambs in Clover – Jack Strachey (“Well, I guess that takes care of the day’s business.”)
+
+
+
+-->
+	
+	</body>
+</html>
